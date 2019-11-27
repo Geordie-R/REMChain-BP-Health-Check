@@ -1,0 +1,42 @@
+
+remcli --url https://testhain.remme.io get actions geordiertoon
+
+
+remcli --url https://testchain.remme.io get actions rem.swap 12 10 -j | python3 -c "import sys, json;
+def getSwapInitProducers():
+  init_producers = []
+  for swap in json.load(sys.stdin)['actions']: 
+    #print(state);
+    action_trace = swap['action_trace']
+    action_trace_act = swap['action_trace']['act']
+    init_name = action_trace_act['name'];
+    if init_name == 'init':
+      account = action_trace_act['account'];
+      actor = action_trace_act['authorization'][0]['actor'];
+      rampayer = action_trace_act['data']['rampayer'];
+      block_num = action_trace['block_num'];
+      block_time = action_trace['block_time'];
+      init_producers.append('[' + actor + ',' + str(block_num) + ',' +  str(block_time) + ','']');
+      #print(init_name);
+  return init_producers;
+mytest = getSwapInitProducers();
+print(mytest);"
+
+
+
+
+remcli --url https://testchain.remme.io system listproducers -j | python3 -c "import sys, json;
+def getActiveProducers():
+  active_producers = []
+  for producer in json.load(sys.stdin)['rows']: 
+    if producer['is_active']:
+      #print(state);
+      owner = producer['owner'];
+      active_producers.append(owner);
+  #print(active_producers);
+  return active_producers
+test = getActiveProducers();
+print(test);"
+
+
+  
