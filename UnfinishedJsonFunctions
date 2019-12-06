@@ -35,5 +35,12 @@ def getActiveProducers():
 test = getActiveProducers();
 print(test);"
 
+#Producer List Curl Request
+curl 'https://testchain.remme.io/v1/chain/get_table_rows' -H 'authority: testchain.remme.io' -H 'origin: https://local.bloks.io' -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36' -H 'content-type: text/plain;charset=UTF-8' -H 'accept: */*' -H 'sec-fetch-site: cross-site' -H 'sec-fetch-mode: cors' -H 'referer: https://local.bloks.io/contract?tab=Tables&account=rem&scope=rem&table=producers&limit=100&nodeUrl=testchain.remme.io&coreSymbol=REM&systemDomain=rem' -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' --data-binary '{"json":true,"code":"rem","scope":"rem","table":"producers","table_key":"","lower_bound":null,"upper_bound":null,"index_position":1,"key_type":"i64","limit":100,"reverse":false,"show_payer":false}'
+
+#Rem.swap inits
+
+curl 'https://testchain.remme.io/v1/history/get_actions' -H 'authority: testchain.remme.io' -H 'origin: https://local.bloks.io' -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36' -H 'content-type: text/plain;charset=UTF-8' -H 'accept: */*' -H 'sec-fetch-site: cross-site' -H 'sec-fetch-mode: cors' -H 'referer: https://local.bloks.io/account/rem.swap?nodeUrl=testchain.remme.io&coreSymbol=REM&systemDomain=rem' -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' --data-binary '{"account_name":"rem.swap","pos":-1,"offset":-100}'
+
 
   
